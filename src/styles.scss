@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/circular-menu/dist/css/circular-menu.css";
+
+#wheelnav-divWheel-marker {
+  stroke: #1572b6;
+  stroke-width: 40px !important;
+  fill: red;
+}

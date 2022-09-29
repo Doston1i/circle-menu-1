@@ -33,7 +33,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/menu-test-one/circular-menu.js",
+              "src/app/menu-test-two/raphael.min.js",
+              "src/app/menu-test-two/wheelnav.min.js"
+            ]
           },
           "configurations": {
             "production": {
