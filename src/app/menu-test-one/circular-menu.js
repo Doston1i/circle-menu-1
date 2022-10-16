@@ -1,4 +1,6 @@
 //circular-menu
+
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -38,7 +40,7 @@
 
         l += "px";
         m += "px";
-        
+
         return {
             width:  l,
             height: l,
@@ -127,11 +129,11 @@
     };
 
     function createLists (parent) {
-        
+
         this._config.menus.forEach(function(v, k){
 
             this._createList(parent, v, k);
-            
+
         }, this);
 
     }
@@ -260,14 +262,14 @@
         }
     };
     function styleSheet (element, prop, value, pseudo) {
-        
+
         var _this = element;
         var _sheetId = "sheetStyles";
         var _head = document.head || document.getElementsByTagName('head')[0];
         var _sheet = document.getElementById(_sheetId) || document.createElement('style');
         _sheet.id = _sheetId;
         var className = "s-S" + UID.getNew();
-        
+
         _this.className += " " + className;
 
 
@@ -291,7 +293,7 @@
         style(p, 'height', this._calc.menuSize.height);
         style(p, 'margin-top', this._calc.menuSize.marginTop);
         style(p, 'margin-left', this._calc.menuSize.marginLeft);
-        
+
         var self = this;
         on(p, "click", function(e){
             if(e.toElement === p){
@@ -382,8 +384,8 @@
         parent.appendChild(a);
 
         this._createHorizontal(a, data, index);
-        
-        
+
+
         //toggle subMenu
         if (hasSubMenus(data.menus)) {
             var subMenu = this._createSubMenu(self, data.menus, index);
@@ -420,7 +422,7 @@
         }
     }
 
-    const sizeRatio = 0.65;
+    const sizeRatio = 0.45;
     const marginTopRatio = 0.2;
     const fontHeight = 13;
 
@@ -444,10 +446,13 @@
         var span = document.createElement('span');
 
         var icon = getIcon(data.icon),
-            color = getIconColor(data.icon);
+            color = "#d8d8da";
+          //  background = "#fff";
+
 
         classed(span, icon + " cm-icon", true);
         style(span, 'color', color);
+       // style(span, 'Background', background);
 
         var l = this._calc.clickZoneRadius * sizeRatio - fontHeight + "px",
             m = this._calc.clickZoneRadius * marginTopRatio - fontHeight + "px";
@@ -455,6 +460,8 @@
         style(span, 'height', l);
         style(span, 'font-size', l);
         style(span, 'margin-top', m);
+
+
 
         parent.appendChild(span);
     }
@@ -526,7 +533,7 @@
 
     const sizeRatio$1 = 5 / 3;
     const percentRatio = 0.45;
-    const centralDegRatio = 0.618;
+    const centralDegRatio = 0.500;
 
 
     function createSubMenu(creator, menus, index) {
@@ -547,7 +554,7 @@
             animation: "into",
             menus: menus
         });
-        
+
         return new CMenu(subMenu, creator._cMenu)
             .config(config);
     }
@@ -576,9 +583,9 @@
     const defaultConfig = {
         totalAngle: 360,//deg,
         spaceDeg: 0,//deg
-        background: "#323232",
-        backgroundHover: "#515151",
-        pageBackground: "transparent",
+        background: "#f4f4f4",
+        backgroundHover: "#04a5db",
+        pageBackground: " #f4f4f4",
         percent: 0.32,//%
         diameter: 300,//px
         position: 'top',
@@ -632,7 +639,7 @@
 
     function styles (styles) {
         if(!styles instanceof Object) return this;
-        
+
         for(var k in styles){
             if(styles.hasOwnProperty(k)) style(this._container, k, styles[k]);
         }
@@ -642,7 +649,7 @@
 
     function CMenu(element, pMenu){
         this._container = element;
-        
+
         if(pMenu) this._pMenu = pMenu;
     }
 

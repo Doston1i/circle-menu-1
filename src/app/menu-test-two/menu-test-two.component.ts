@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 declare var wheelnav: any;
 declare var slicePath: any;
 declare var markerPath: any;
+declare var colorpalette: any;
+
 @Component({
   selector: 'app-menu-test-two',
   templateUrl: './menu-test-two.component.html',
@@ -23,8 +25,11 @@ export class MenuTestTwoComponent implements OnInit {
     // wheel.createWheel();
   //Use advanced constructor for more wheelnav on same div
 
-let wheel1 = new wheelnav('wheelDiv', null, 300, 300);
-let wheel2 = new wheelnav('wheelDiv2', null,600,600);
+
+  var wheel = new wheelnav("divWheel", null, 300, 300);
+
+let wheel1 = new wheelnav('wheelDiv', null, 400, 400);
+let wheel2 = new wheelnav('wheel2', wheel1.raphael);
 
 //Customize slicePaths for proper size
 wheel1.slicePathFunction = slicePath().DonutSlice;
@@ -33,15 +38,25 @@ wheel1.slicePathCustom.minRadiusPercent = 0.3;
 wheel1.slicePathCustom.maxRadiusPercent = 0.6;
 wheel1.sliceSelectedPathCustom = wheel1.slicePathCustom;
 wheel1.sliceInitPathCustom = wheel1.slicePathCustom;
+
 // marker
 wheel1.markerEnable = true;
-wheel1.markerPathFunction = markerPath().PieLineMarker;
+wheel1.markerAttr = { stroke: 'blue', 'stroke-width': '1' };
+wheel2.markerPathFunction = markerPath().PieLineMarker;
+wheel1.markerPathFunction = markerPath().DropMarker;
+wheel1.markerAttr = { fill: 'black', stroke: 'black' };
+
+
+
+
 wheel2.slicePathFunction = slicePath().DonutSlice;
 wheel2.slicePathCustom = slicePath().DonutSliceCustomization();
-wheel2.slicePathCustom.minRadiusPercent = 0.6;
+wheel2.slicePathCustom.minRadiusPercent = 0.65;
 wheel2.slicePathCustom.maxRadiusPercent = 0.9;
 wheel2.sliceSelectedPathCustom = wheel2.slicePathCustom;
 wheel2.sliceInitPathCustom = wheel2.slicePathCustom;
+
+wheel1.colors = colorpalette.parrot;
 
 //Disable rotation, set navAngle and create the menus
 wheel1.clickModeRotate = false;

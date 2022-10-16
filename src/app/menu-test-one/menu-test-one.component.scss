@@ -1,6 +1,6 @@
 .tips {
   font-size: 40px;
-  color: #999;
+  color: rgb(100, 18, 18);
   position: fixed;
   top: 50%;
   left: 30%;
@@ -10,6 +10,14 @@
   left: 50%;
   top: 50%;
 }
+.circle {
+  background: lightblue;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -16px;
+    margin-left: -150px;
+}
 
 .my-icon {
   background: url("https://rawgit.com/yandongCoder/circular-menu/master/examples/circular-menu.png");
@@ -17,12 +25,29 @@
 
 .icon1 {
   background-position: 0 0;
-}
+  font-size: 25px !important;
 
+}
+.icon1 .fa-solid{
+color: black;
+}
 .icon2 {
   background-position: 0 -56px;
 }
 
 .icon3 {
   background-position: 0 -116px;
+}
+.circular-menu ul li a {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  padding-top: 25px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
